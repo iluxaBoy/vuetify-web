@@ -1,6 +1,6 @@
 
 <template>
-  <v-app class="main-container">
+  <v-app class="px-4">
     <div class="top-bar"></div>
     <v-main class="box">
       <TopCard class="mb-7" />
@@ -23,7 +23,7 @@ import SubInfo from "./components/SubInfo.vue";
 import BottInfo from "./components/BottInfo.vue";
 </script>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *,
@@ -44,7 +44,7 @@ import BottInfo from "./components/BottInfo.vue";
   padding: 40px;
 }
 
-.main-container {
+.v-app {
   background-color: #F1F3F8;
 }
 
