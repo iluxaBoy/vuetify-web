@@ -1,29 +1,26 @@
 <template>
     <div class="container">
         <v-card class="rounded-xl">
-            <div class="top-sec d-flex align-center justify-space-between">
+            <div class="py-md-5 px-md-10 py-3 px-4 d-flex align-center justify-space-between">
                 <div class="d-flex align-center">
-                    <v-card-actions>
-                        <button class="arrow">
-                            <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 5L7.5 9.33013V0.669873L0 5ZM6.75 5.75H18V4.25H6.75V5.75Z" fill="#757575" />
-                            </svg>
-                        </button>
-                    </v-card-actions>
-
+                    <v-btn size="small" class="mr-6" style="color: #757575;" icon="" variant="outlined">
+                        <v-icon size="35" style="color: #757575;">
+                            mdi-arrow-left-thin
+                        </v-icon>
+                    </v-btn>
                     <v-divider vertical></v-divider>
-
-                    <v-card-subtitle class="sub-text ml-12">
+                    <v-card-subtitle v-if="!isMobile()" class="sub-text ml-12">
                         LAUNCHPAD / DETAILS / PROJECT / 1
                     </v-card-subtitle>
                 </div>
                 <div>
-                    <v-text class="card-text font-weight-medium">
+                    <span class="card-text font-weight-medium">
                         Open Campus
-                    </v-text>
+                    </span>
                 </div>
-                <v-card-title class="card-title text-white">Open Capmus</v-card-title>
-                <div class="pending text-white rounded-lg font-weight-light">PENDING</div>
+                <v-card-title class="text-white">Open Capmus</v-card-title>
+                <v-btn size="small" color="#2196F3"
+                    class="pending px-4 text-white rounded-lg font-weight-light">PENDING</v-btn>
             </div>
             <div class="blur overflow-hidden">
                 <v-img class="top-img" lazy-src="@\assets\image2.png" cover />
@@ -32,85 +29,68 @@
     </div>
 </template>
 
-<style scoped>
-.top-sec {
-    position: relative;
-    padding: 9px 40px 9px 48px;
-    height: 92px;
+<script setup>
+import { useDisplay } from 'vuetify'
+
+const { width } = useDisplay()
+
+function isMobile() {
+    return width.value <= 725;
 }
+</script>
 
-.top-sec .sub-text {
-    font-size: 20px;
-}
-
-.top-sec .card-text {
-    font-size: 18px;
-}
-
-.blur {
-    background-color: #4C1920;
-}
-
-.top-img {
-    height: 248px;
-    filter: blur(18px);
-}
-
-.card-title {
-    position: absolute;
-    left: 20px;
-    top: 108px;
-    font-size: 32px;
-    z-index: 3;
-}
-
-.arrow {
-    margin-right: 48px;
-    width: 34px;
-    height: 34px;
-    border: solid 3px #757575;
-    border-radius: 100%;
-}
-
-.pending {
-    position: absolute;
-    padding: 5px 20px;
-    background-color: #2196F3;
-    right: 40px;
-    top: 118px;
-    z-index: 3;
-}
-
-@media (max-width: 860px) {
-    .top-sec {
-        padding: 9px 22px;
-        height: 63px;
-    }
-
-    .top-img {
-        height: 164px;
-    }
-
-    .card-title {
-        left: 0;
-        top: 60px;
-    }
-
+<style scoped lang="scss">
+.v-card {
     .sub-text {
-        display: none;
-    }
-
-    .card-title {
         font-size: 20px;
     }
 
-    .arrow {
-        margin-right: 23px;
+    .card-text {
+        font-size: 18px;
+    }
+
+    .blur {
+        background-color: #4C1920;
+
+        .v-img {
+            height: 248px;
+            filter: blur(18px);
+        }
+    }
+
+    .v-card-title {
+        position: absolute;
+        left: 20px;
+        top: 108px;
+        font-size: 32px;
+        z-index: 3;
     }
 
     .pending {
-        padding: 3px 18px;
-        right: 15px;
-        top: 70px;
+        position: absolute;
+        right: 40px;
+        top: 118px;
+        z-index: 3;
     }
-}</style>
+}
+
+
+@media (max-width: 860px) {
+    .v-card {
+        .card-title {
+            font-size: 20px;
+        }
+
+        .v-card-title {
+            top: 70px;
+            left: 0px;
+        }
+
+        .pending {
+            padding: 3px 18px;
+            right: 10px;
+            top: 80px;
+        }
+    }
+}
+</style>
