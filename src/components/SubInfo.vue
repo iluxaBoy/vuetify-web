@@ -1,148 +1,117 @@
 <template>
     <div class="container">
-        <v-card class="rounded-xl">
-            <v-card-title class="pb-0 font-weight-medium">Длительность подписки</v-card-title>
-            <div class="main d-flex" lg="2">
-                <fa class="fa mt-3" icon="fa-solid fa-check" />
-                <div>
-                    <v-card-title class="mb-2 font-weight-medium">Расчётный период удержания BNB</v-card-title>
+        <v-card class="rounded-xl py-md-7 px-md-7 py-0 px-0 pb-6 pr-16">
+            <v-card-title class="pb-0 mb-md-5 font-weight-medium">Subscription duration</v-card-title>
+            <div v-for="id in data" :key="id" class="main mx-md-16 mt-md-13 mx-6 d-flex">
+                <v-btn v-if="!isMobile()" class="mt-3" flat icon="" color="#FFF8DB" size="x-large">
+                    <v-icon color="#FEDC4A" size="x-large">mdi-check</v-icon>
+                </v-btn>
+                <v-btn v-if="isMobile()" class="mt-3" flat icon="" color="#FFF8DB" size="x-small">
+                    <v-icon color="#FEDC4A">mdi-check</v-icon>
+                </v-btn>
+                <div class="ml-md-10 ml-3">
+                    <v-card-title class="mb-2 font-weight-medium">{{ id.title }}</v-card-title>
                     <v-row class="mb-0 font-weight-medium">
-                        <v-text>2023-09-08</v-text>
+                        <span>{{ id.date }}</span>
                         <v-divider class="mx-3" vertical></v-divider>
-                        <v-text>03:00</v-text>
+                        <span>{{ id.time }}</span>
                     </v-row>
-                    <v-card-text class="text font-weight-medium text-medium-emphasis">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.
-                        Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus`</v-card-text>
-                </div>
-            </div>
-            <div class="main d-flex">
-                <fa class="fa mt-3" icon="fa-solid fa-check" />
-                <div>
-                    <v-card-title class="mb-2 font-weight-medium">Старт подписки:</v-card-title>
-                    <v-row class="mb-0 font-weight-medium">
-                        <v-text>2023-09-08</v-text>
-                        <v-divider class="mx-3" vertical></v-divider>
-                        <v-text>03:00</v-text>
-                    </v-row>
-                    <v-card-text class="text font-weight-medium text-medium-emphasis">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.
-                        Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus`</v-card-text>
-                </div>
-            </div>
-            <div class="main d-flex">
-                <fa class="fa mt-3" icon="fa-solid fa-check" />
-                <div>
-                    <v-card-title class="mb-2 font-weight-medium">Расчётный период:</v-card-title>
-                    <v-row class="mb-0 font-weight-medium">
-                        <v-text>2023-09-08</v-text>
-                        <v-divider class="mx-3" vertical></v-divider>
-                        <v-text>03:00</v-text>
-                    </v-row>
-                    <v-card-text class="text font-weight-medium text-medium-emphasis">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.
-                        Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus`</v-card-text>
-                </div>
-            </div>
-            <div class="main d-flex">
-                <fa class="fa mt-3" icon="fa-solid fa-check" />
-                <div>
-                    <v-card-title class="mb-2 font-weight-medium">Итоговое распределение токенов</v-card-title>
-                    <v-row class="mb-0 font-weight-medium">
-                        <v-text>2023-09-08</v-text>
-                        <v-divider class="mx-3" vertical></v-divider>
-                        <v-text>03:00</v-text>
-                    </v-row>
-                    <v-card-text class="font-weight-medium text-medium-emphasis">Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et. Vestibulum ligula
-                        mauris, pharetra non pretium in, scelerisque vitae risus`</v-card-text>
+                    <v-card-text v-if="!isMobile()" class="text font-weight-medium text-medium-emphasis">{{ id.text
+                    }}</v-card-text>
                 </div>
             </div>
         </v-card>
     </div>
 </template>
 
-<style scoped>
-.v-card {
-    padding: 28px 64px 28px 40px;
-}
+<script setup>
+import { ref } from 'vue';
+import { useDisplay } from 'vuetify'
 
-.v-card .v-card-title {
-    margin-bottom: 16px;
-    font-size: 32px;
+const { width } = useDisplay()
+
+function isMobile() {
+    return width.value <= 960;
+}
+const data = ref([
+    {
+        id: 1,
+        title: "Distribution",
+        date: "2023-09-08",
+        time: "03:00",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus.Lorem ipsum dolor sit amet,consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et."
+    },
+    {
+        id: 2,
+        title: "Subscription start",
+        date: "2023-09-08",
+        time: "03:00",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus.Lorem ipsum dolor sit amet,consectetur adipiscing elit."
+    },
+    {
+        id: 3,
+        title: "Billing period",
+        date: "2023-09-08",
+        time: "03:00",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus."
+    },
+    {
+        id: 4,
+        title: "Final distribution of tokens",
+        date: "2023-09-08",
+        time: "03:00",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit. Suspendisse volutpat tempus risus, eu cursus urna bibendum et.Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus.Vestibulum ligula mauris, pharetra non pretium in, scelerisque vitae risus."
+    },
+]);
+</script>
+
+<style scoped lang="scss">
+.v-card {
+
+    .v-card-title {
+        font-size: 32px;
+    }
 }
 
 .main {
-    margin-left: 64px;
-    margin-top: 52px;
+    .v-card-title {
+        padding-left: 0;
+        font-size: 24px;
+    }
+
+    div {
+        .v-row {
+            margin-left: 0;
+            font-size: 18px;
+        }
+
+        .v-card-text {
+            padding-left: 0;
+            font-size: 18px;
+        }
+    }
 }
 
-.main div {
-    margin-left: 26px;
-}
-
-.main:first-of-type {
-    margin-top: 0;
-}
-
-.main .v-card-title {
-    padding-left: 0;
-    font-size: 24px;
-}
-
-.v-row {
-    margin-left: 0;
-    font-size: 18px;
-}
-
-.v-card-text {
-    padding-left: 0;
-    font-size: 18px;
-}
-
-.fa {
-    padding: 12px 15px;
-    font-size: 38px;
-    border-radius: 100%;
-    background-color: #FFF8DB;
-    color: #fedc4a;
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 960px) {
     .v-card {
-        display: flex;
-        flex-direction: column;
-        padding: 16px 12px;
-    }
+        // display: flex;
+        // flex-direction: column;
+        // padding: 16px 12px;
 
-    .v-card .v-card-title {
-        margin-bottom: 0px;
-        font-size: 20px;
-    }
+        .v-card-title {
+            margin-bottom: 0px;
+            font-size: 20px;
+        }
 
-    .main {
-        margin: 0;
-        margin-left: 10px;
-    }
+        div {
+            .v-card-title {
+                font-size: 16px;
+            }
 
-    .main div {
-        margin-left: 7px;
+            .v-row {
+                font-size: 12px;
+            }
+        }
     }
-
-    .main .v-card-title {
-        font-size: 16px;
-    }
-
-    .v-row {
-        font-size: 12px;
-    }
-
-    .v-card-text {
-        display: none;
-    }
-
-    .fa {
-        padding: 7px 7px;
-        font-size: 20px;
-    }
-}</style>
+}
+</style>

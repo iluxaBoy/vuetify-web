@@ -56,15 +56,6 @@ const data = ref([
 }
 
 @media (max-width: 900px) {
-
-    // .v-col {
-    //     margin-top: 26px;
-    // }
-
-    .v-col:first-of-type {
-        margin-top: 0;
-    }
-
     .bott-sec div {
         padding: 9px 44px;
         max-width: 314px;
