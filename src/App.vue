@@ -1,8 +1,7 @@
 
 <template>
   <v-app class="px-4">
-    <div class="top-bar"></div>
-    <v-main class="box">
+    <v-main class="box pa-lg-10 pa-6">
       <TopCard class="mb-7" />
       <TopCardInfo class="mb-7" />
       <SubSec class="mb-7" />
@@ -40,12 +39,8 @@ import BottInfo from "./components/BottInfo.vue";
   max-width: 1216px;
 }
 
-.box {
-  padding: 40px;
-}
-
 .v-app {
-  background-color: #F1F3F8;
+  background-color: black;
 }
 
 .top-bar {
@@ -62,7 +57,7 @@ import BottInfo from "./components/BottInfo.vue";
 }
 
 @media (max-width: 1280px) {
-  .box {
+  .v-app {
     padding: 26px;
   }
 }
