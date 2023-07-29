@@ -18,7 +18,7 @@
                         Open Campus
                     </span>
                 </div>
-                <v-card-title class="text-white">Open Capmus</v-card-title>
+                <v-card-title class="blur-text text-white">Open Capmus</v-card-title>
                 <v-btn size="small" color="#2196F3"
                     class="pending px-4 text-white rounded-lg font-weight-light">PENDING</v-btn>
             </div>
@@ -90,6 +90,10 @@ function isMobile() {
             padding: 3px 18px;
             right: 10px;
             top: 80px;
+        }
+
+        .blur-text {
+            font-size: 20px;
         }
     }
 }
